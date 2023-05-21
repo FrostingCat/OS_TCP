@@ -1,0 +1,13 @@
+all: client server cashier1 cashier2 listener
+client: client.c DieWithError.c
+	gcc client.c DieWithError.c -o client
+server: server.h server.c DieWithError.c handle.c
+	gcc server.c DieWithError.c handle.c \
+	CreateTCPServerSocket.c AcceptTCPConnection.c \
+	-o server
+cashier1: cashier1.c DieWithError.c
+	gcc cashier1.c DieWithError.c -o cashier1
+cashier2: cashier2.c DieWithError.c
+	gcc cashier2.c DieWithError.c -o cashier2
+listener: listener.c DieWithError.c
+	gcc listener.c DieWithError.c -o listener
